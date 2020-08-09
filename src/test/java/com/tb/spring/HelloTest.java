@@ -67,4 +67,11 @@ public class HelloTest {
 		assertEquals(35, p1.getAge());
 		assertEquals("典韦", p1.getHero().get(1));
 	}
+	
+	@Test
+	public void test3() {
+		Person p1=ctx.getBean(Person.class);
+		assertEquals("刘备", p1.getName());
+		assertEquals(40, p1.getAge());
+	}
 }
