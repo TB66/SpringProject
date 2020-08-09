@@ -1,8 +1,13 @@
 package com.tb.spring;
 
+import static org.junit.Assert.assertEquals;
+
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.tb.spring.bean.Person;
 import com.tb.spring.dao.UserDao;
 
 /**
@@ -24,6 +29,17 @@ import com.tb.spring.dao.UserDao;
  *
  */
 public class HelloTest {
+	ClassPathXmlApplicationContext ctx;
+	//@Before方法执行前 执行
+	@Before
+	public void before() {
+		ctx= new ClassPathXmlApplicationContext("beans.xml");
+	}
+	//@After方法执行结束 执行
+	@After
+	public void after() {
+		ctx.close();
+	}
 	@Test
 	public void test() {
 
@@ -43,5 +59,12 @@ public class HelloTest {
 		user1.getUserId("zhangsan");
 		user2.getUserId("lisi");
 		ctx.close();
+	}
+	@Test
+	public void test2() {
+		Person p1=(Person) ctx.getBean("p1");
+		assertEquals("曹操", p1.getName());
+		assertEquals(35, p1.getAge());
+		assertEquals("典韦", p1.getHero().get(1));
 	}
 }

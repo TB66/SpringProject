@@ -6,10 +6,32 @@
 
 	<bean id="hello" class="com.tb.spring.Hello">
 	</bean>
-	
+
 	<bean id="odao" class="com.tb.spring.dao.OracleDao">
 	</bean>
-	
+
 	<bean id="mdao" class="com.tb.spring.dao.MySqlDao">
 	</bean>
-</beans>
+	<!-- Spring依赖注入(DI) 注入方式有三种 
+	注入:对象属性初始化设值
+	 	1. setter注入(set方法注入) 
+	 	2.构造方法注入 
+	 	3.接口注入==>SpringMVC大量的应用
+	-->
+
+	<!--注入的例子使用的是实体对象，实际开发中很少对实体对象设值 -->
+	<bean id="p1" class="com.tb.spring.bean.Person">
+		<!-- property 实现setter注入 -->
+		<property name="name" value="曹操"></property>
+		<property name="age" value="35"></property>
+		<property name="hero">
+			<list>
+				<value type="java.lang.String">许褚</value>
+				<value type="java.lang.String">典韦</value>
+				<value>张辽</value>
+				<null></null>
+			</list>
+		</property>
+	</bean>
+
+</beans> 
