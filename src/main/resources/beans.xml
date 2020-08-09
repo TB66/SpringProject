@@ -7,4 +7,9 @@
 	<bean id="hello" class="com.tb.spring.Hello">
 	</bean>
 	
+	<bean id="odao" class="com.tb.spring.dao.OracleDao">
+	</bean>
+	
+	<bean id="mdao" class="com.tb.spring.dao.MySqlDao">
+	</bean>
 </beans>
