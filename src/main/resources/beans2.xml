@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!--scope="singleton"单例默认每次getBean的时候，都会使用 同一-个bean
+		scope= "prototype"原型(多利)每次getBean的时候 ，都会创建一 个新的bean
+		其他作用域: session, request, global
+		prototype模式每次都会创建新的bean，每次都会调用 new or工厂方法
+	 -->
+	<bean id="hello1" class="com.tb.spring.Hello" scope="prototype">
+	</bean>
+
+	<!-- lazy-init:
+				懒加载，默认为false, Spring容器在启动时， 就会创建 所有未配置懒加载bean
+				prototype原型模式下默认懒加载
+	 -->
+	<bean id="hello2" class="com.tb.spring.Hello" lazy-init="true">
+	<constructor-arg name="a" value="100"></constructor-arg>
+	</bean>
+	
+	<!-- 
+		init-method=""  	destroy-method=""
+	 -->
+	
+	<bean id="hello3" class="com.tb.spring.Hello" 
+	init-method="init"	destroy-method="destroy">
+	<constructor-arg name="a" value="100"></constructor-arg>
+	</bean>
+	
+	<!-- 
+		autowire="default"自动装载， 根据一 些规则自动的从IOC容器获取属性值
+		byName:用属性名从容器中获取指定i d的bean
+		byType:用类名从容器中获取指定类型的bean
+		constructor:根据构造方法参数的类型获取bean
+		default ==> no不自动装载
+	 -->
+	
+	
+	<bean id="friend" class="com.tb.spring.bean.Person" >
+		<property name="name" value="关羽"></property>
+	</bean>
+	
+	<bean id="p2" class="com.tb.spring.bean.Person" autowire="byName">
+		<property name="name" value="刘备"></property>
+		<property name="age" value="38"></property>
+	</bean>
+	
+	
+	
+</beans>

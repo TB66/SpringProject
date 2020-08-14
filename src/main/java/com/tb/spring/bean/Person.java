@@ -6,7 +6,7 @@ public class Person {
 	private String name;
 	private String alisa;
 	private int age;
-	private List<?> hero;
+	private List<String> hero;
 	private Person friend;
 
 	public Person getFriend() {
@@ -35,11 +35,11 @@ public class Person {
 		this.age = age;
 	}
 
-	public List<?> getHero() {
+	public List<String> getHero() {
 		return hero;
 	}
 
-	public void setHero(List<?> hero) {
+	public void setHero(List<String> hero) {
 		this.hero = hero;
 	}
 
@@ -67,4 +67,21 @@ public class Person {
 		this.age = age;
 	}
 
+	/**
+	 * 静态的工厂方法
+	 */
+	public static Person PersonFactory() {
+		Person p = new Person();
+		p.setAge(40);
+		return p;
+	}
+
+	/**
+	 * 实例的工厂方法
+	 */
+	public Person PersonFactory1() {
+		Person p = new Person();
+		p.setAge(20);
+		return p;
+	}
 }

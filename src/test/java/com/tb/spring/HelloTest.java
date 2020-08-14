@@ -46,6 +46,7 @@ public class HelloTest {
 		// Spring 容器对象
 		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
 		Hello h = (Hello) ctx.getBean("hello");
+		System.out.println("========");
 		h.sayHello();
 		ctx.close();
 	}
